@@ -1,3 +1,5 @@
+import { json } from "stream/consumers"
+
 export const dynamic = 'force-dynamic'
 
 export async function GET(request: Request) {
@@ -14,12 +16,18 @@ export async function GET(request: Request) {
         console.log(`${item[0]}: ${item[1]}`);
     }
 
-    return Response.json({
+ 
+    console.log(JSON.stringify({
         a1,
         a2,
         a3,
         a4,
         a5,
         a6
-    })
+    }))
+
+
+    return new Response('Hello, Next.js!', {
+        status: 200
+      })
 }
