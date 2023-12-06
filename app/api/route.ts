@@ -6,13 +6,15 @@ export async function GET(request: Request) {
     const a2 = headers.get("Forwarded")
     const a3 = headers.get("X-Real-IP") // Nginx
     const a4 = headers.get("True-Client-IP") // Cloudflare 和 Akamai
-    const a5 = headers.get("CF-Connecting-IP") // Cloudflare
+    const a5 = headers.get("X-Client-IP")
+    const a6 = headers.get("CF-Connecting-IP") // Cloudflare
 
     return Response.json({
         a1,
         a2,
         a3,
         a4,
-        a5
+        a5,
+        a6
     })
 }
