@@ -9,6 +9,11 @@ export async function GET(request: Request) {
     const a5 = headers.get("X-Client-IP")
     const a6 = headers.get("CF-Connecting-IP") // Cloudflare
 
+
+    for (const item in headers.entries()) {
+        console.log(`${item[0]}: ${item[1]}`);
+    }
+
     return Response.json({
         a1,
         a2,
