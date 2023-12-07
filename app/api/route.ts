@@ -1,7 +1,3 @@
-import { json } from "stream/consumers"
-
-export const dynamic = 'force-dynamic'
-
 export async function GET(request: Request) {
     const headers = request.headers
     const a1 = headers.get("X-Forwarded-For")
@@ -11,23 +7,16 @@ export async function GET(request: Request) {
     const a5 = headers.get("X-Client-IP")
     const a6 = headers.get("CF-Connecting-IP") // Cloudflare
 
-
-    for (const item in headers.entries()) {
-        console.log(`${item[0]}: ${item[1]}`);
-    }
-
- 
-    console.log(JSON.stringify({
+    let json = JSON.stringify({
         a1,
         a2,
         a3,
         a4,
         a5,
         a6
-    }))
+    })
 
-
-    return new Response('Hello, Next.js!', {
+    return new Response(json, {
         status: 200
-      })
+    })
 }
