@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 export async function GET(request: Request) {
     const headers = request.headers
     const a1 = headers.get("X-Forwarded-For")
