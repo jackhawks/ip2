@@ -5,10 +5,8 @@ import config from "./fresh.config.ts";
 
 import "$std/dotenv/load.ts";
 
-import { Cron } from "croner";
-
-const _scheduler : Cron = new Cron("* * * * * *", () => {
-    console.log("This will run every second.");
+Deno.cron("sample cron", "*/3 * * * *", () => {
+  console.log("cron job executed every 10 minutes");
 });
 
 await dev(import.meta.url, "./main.ts", config);
