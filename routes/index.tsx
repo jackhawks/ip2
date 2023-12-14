@@ -21,11 +21,6 @@ export const handler: Handlers<Data> = {
     const ip6 = req.headers.get("True-Client-IP");
     const ip7 = ctx.remoteAddr.hostname;
 
-    req.headers.forEach((item, index) => {
-      console.log(index, " ====> ", item);
-    });
-    console.log()
-
     return ctx.render({
       ip1,
       ip2,
@@ -47,7 +42,7 @@ export default function MyPage(props: PageProps<Data>) {
       <p>you ip is4: {props.data.ip4}</p>
       <p>you ip is5: {props.data.ip5}</p>
       <p>you ip is6: {props.data.ip6}</p>
-      <p>you ip is6: {props.data.ip7}</p>
+      <p>you ip is7: {props.data.ip7}</p>
     </>
   );
 }
