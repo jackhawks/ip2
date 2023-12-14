@@ -1,4 +1,5 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
+import { re } from "$std/semver/_shared.ts";
 
 interface Data {
   ip1: string | null;
@@ -19,6 +20,12 @@ export const handler: Handlers<Data> = {
     const ip5 = req.headers.get("CF-Connecting-IPv6");
     const ip6 = req.headers.get("True-Client-IP");
     const ip7 = ctx.remoteAddr.hostname;
+
+    req.headers.forEach((item, index) => {
+      console.log(index, " ====> ", item);
+    });
+    console.log()
+
     return ctx.render({
       ip1,
       ip2,
