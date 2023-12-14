@@ -29,6 +29,6 @@ jobs:
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
-          project: "pure-heron-59"
+          project: "ip2run"
           entrypoint: "main.ts" # 📝 Update the entrypoint if necessary
           root: "." # 📝 Update the root if necessary
