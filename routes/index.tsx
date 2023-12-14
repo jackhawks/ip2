@@ -6,7 +6,8 @@ interface Data {
   ip3: string | null;
   ip4: string | null;
   ip5: string | null;
-  ip6: string;
+  ip6: string | null;
+  ip7: string;
 }
 
 export const handler: Handlers<Data> = {
@@ -15,8 +16,9 @@ export const handler: Handlers<Data> = {
     const ip2 = req.headers.get("Forwarded");
     const ip3 = req.headers.get("X-Real-IP");
     const ip4 = req.headers.get("CF-Connecting-IP");
-    const ip5 = req.headers.get("True-Client-IP");
-    const ip6 = ctx.remoteAddr.hostname;
+    const ip5 = req.headers.get("CF-Connecting-IPv6");
+    const ip6 = req.headers.get("True-Client-IP");
+    const ip7 = ctx.remoteAddr.hostname;
     return ctx.render({
       ip1,
       ip2,
@@ -24,6 +26,7 @@ export const handler: Handlers<Data> = {
       ip4,
       ip5,
       ip6,
+      ip7,
     });
   },
 };
@@ -37,6 +40,7 @@ export default function MyPage(props: PageProps<Data>) {
       <p>you ip is4: {props.data.ip4}</p>
       <p>you ip is5: {props.data.ip5}</p>
       <p>you ip is6: {props.data.ip6}</p>
+      <p>you ip is6: {props.data.ip7}</p>
     </>
   );
 }
